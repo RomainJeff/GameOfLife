@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+
+    <style>
+        #grille .row {
+            border: solid 1px black;
+        }
+
+        #grille.active .row {
+            border-color: transparent;
+        }
+
+        .row {
+            width: 15px;
+            height: 15px;
+            background: white;
+            float: left;
+            cursor: pointer;
+            background: transparent;
+            transition-duration: 200ms;
+        }
+
+        .row[data-active=true] {
+            background: url('space.png');
+            background-size: 15px 15px;
+            border-color: transparent;
+        }
+
+        .clear {
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <div id="grille"></div>
+    <br><br>
+    <button id="play">Jouer</button>
+    <button id="stop">Stop</button>
+    <button id="reset">Reinitialiser</button>
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+</body>
+</html>
