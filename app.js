@@ -20,10 +20,10 @@ grilleController.draw(grilleID);
 // Lors du clique sur le bouton "Jouer"
 $('#play').on('click', function () {
     $('#grille').addClass('active');
-    gameController.init(grilleController, neightboorController, grilleTempoController)
+    var game = new gameController(grilleController, neightboorController, grilleTempoController)
                   .start();
     gameInterval = setInterval(function (){
-        gameController.init(grilleController, neightboorController, grilleTempoController)
+        var game = new gameController(grilleController, neightboorController, grilleTempoController)
                   .start();
     }, 100);
 });
@@ -61,4 +61,16 @@ $('#grille').on('click', '.row', function () {
         $(this).attr('data-active', true);
         grilleController.setRow(lineCoord, rowCoord, 1);
     }
+});
+
+
+// Personnages
+$('#characters').on('click', 'img', function () {
+    var img = $(this).attr('src');
+
+    $('#grille .row[data-active=true]').each(function () {
+        $(this).css({
+            background: 'url("'+ img +'")'
+        });
+    });
 });

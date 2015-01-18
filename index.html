@@ -9,23 +9,30 @@
         }
 
         #grille.active .row {
-            border-color: transparent;
+            border-color: white;
         }
 
         .row {
-            width: 15px;
-            height: 15px;
+            width: 27px;
+            padding: 0;
+            margin: 0;
+            height: 27px;
             background: white;
             float: left;
             cursor: pointer;
             background: transparent;
             transition-duration: 200ms;
+            box-sizing: border-box;
         }
 
         .row[data-active=true] {
-            background: url('space.png');
-            background-size: 15px 15px;
-            border-color: transparent;
+            background: url('green.jpg');
+            background-size: 25px 25px;
+        }
+
+        img {
+            margin-right: 5px;
+            cursor: pointer;
         }
 
         .clear {
@@ -39,6 +46,13 @@
     <button id="play">Jouer</button>
     <button id="stop">Stop</button>
     <button id="reset">Reinitialiser</button>
+    
+    <span id="characters" style="margin-left: 243px;">
+        <img src="superman.jpg">
+        <img src="green.jpg">
+        <img src="flash.jpg">
+        <img src="batman.jpg">
+    </span>
 
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script type="text/javascript" src="libraries/grille.js"></script>
