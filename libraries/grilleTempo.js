@@ -1,25 +1,27 @@
-var grilleTempoController = {
-    grille: [],
+var grilleTempoController = function (){
 
-    /**
-     * Recupere la grille temporaire
-     * @return array grille
-     *
-     */
-    get: function () {
-        return this.grille;
-    },
+   this.grille = [];
+};
 
-    /**
-     * Defini une cellule de la grille temporaire
-     * @param int line
-     * @param int row
-     * @param boolean value
-     *
-     */
-    setRow: function (line, row, value) {
-        if (!this.grille[line]) this.grille[line] = [];
+/**
+ * Recupere la grille temporaire
+ * @return array grille
+ *
+ */
+grilleTempoController.prototype.get = function() {
+    return this.grille;
+}
 
-        this.grille[line][row] = value;
-    }
+/**
+ * Definit une cellule de la grille temporaire
+ * @param int line
+ * @param int row
+ * @param boolean value
+ *
+ */
+grilleTempoController.prototype.setRow = function(line,row,value){
+
+    if (!this.grille[line]) this.grille[line] = [];
+
+    this.grille[line][row] = value;
 };

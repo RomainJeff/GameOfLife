@@ -3,9 +3,10 @@
 var sizeGrille = 20;
 var grilleID = "grille";
 var gameInterval = function () {};
+var grille = new grilleController();
 
-grilleController.generate(sizeGrille);
-grilleController.draw(grilleID);
+grille.generate(sizeGrille);
+grille.draw(grilleID);
 
 
 
@@ -20,10 +21,10 @@ grilleController.draw(grilleID);
 // Lors du clique sur le bouton "Jouer"
 $('#play').on('click', function () {
     $('#grille').addClass('active');
-    var game = new gameController(grilleController, neightboorController, grilleTempoController)
+    var game = new gameController(grille, new grilleTempoController())
                   .start();
     gameInterval = setInterval(function (){
-        var game = new gameController(grilleController, neightboorController, grilleTempoController)
+        var game = new gameController(grille, new grilleTempoController())
                   .start();
     }, 100);
 });
@@ -42,10 +43,10 @@ $('#reset').on('click', function () {
 
     for (i = 0; i < sizeGrille; i++) {
         for (j = 0; j < sizeGrille; j++) {
-            grilleController.setRow(i, j, 0);
+            grille.setRow(i, j, 0);
         }
     }
-    grilleController.draw(grilleID);
+    grille.draw(grilleID);
 });
 
 
@@ -56,10 +57,10 @@ $('#grille').on('click', '.row', function () {
 
     if ($(this).attr('data-active') == true) {
         $(this).attr('data-active', false);
-        grilleController.setRow(lineCoord, rowCoord, 0);
+        grille.setRow(lineCoord, rowCoord, 0);
     } else {
         $(this).attr('data-active', true);
-        grilleController.setRow(lineCoord, rowCoord, 1);
+        grille.setRow(lineCoord, rowCoord, 1);
     }
 });
 

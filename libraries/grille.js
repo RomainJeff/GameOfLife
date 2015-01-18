@@ -1,84 +1,86 @@
-var grilleController = {
-    grille: [],
+var grilleController = function(){
 
-    /**
-     * Defini l'etat d'une cellule
-     * @param int line 
-     * @param int row
-     * @param bool value
-     *
-     */
-    setRow: function (line, row, value) {
-        this.grille[line][row] = value;
-    },
+    this.grille = [];
 
-    /**
-     * Recupere la grille
-     * @return array
-     *
-     */
-    get: function () {
-        return this.grille;
-    },
+}
+/**
+ * Defini l'etat d'une cellule
+ * @param int line 
+ * @param int row
+ * @param bool value
+ *
+ */
+grilleController.prototype.setRow = function (line, row, value) {
+    this.grille[line][row] = value;
+};
 
-    /** 
-     * Retourne la taille de la grille 
-     * @return int
-     *
-     */
-    getSize: function () {
-        return this.get().length;
-    },
+/**
+ * Recupere la grille
+ * @return array
+ *
+ */
+grilleController.prototype.get = function () {
 
-    /**
-     * Genere une grille de taille indiquee
-     * @param int taille
-     * @param bool alea (facultatif)
-     *
-     */
-    generate: function (taille, alea) {
-        var table = [];
+    return this.grille;
+};
 
-        for(i = 0; i < taille; i++) {
-            table[i] = [];
+/** 
+ * Retourne la taille de la grille 
+ * @return int
+ *
+ */
+grilleController.prototype.getSize = function () {
+    return this.get().length;
+};
 
-            for (ib = 0; ib < taille; ib++) {
-                if (alea == true) {
-                    if ((Math.random() * 10) > 8) {
-                        table[i][ib] = 1;
-                    } else {
-                        table[i][ib] = 0;
-                    }
+/**
+ * Genere une grille de taille indiquee
+ * @param int taille
+ * @param bool alea (facultatif)
+ *
+ */
+grilleController.prototype.generate = function (taille, alea) {
+    var table = [];
+
+    for(i = 0; i < taille; i++) {
+        table[i] = [];
+
+        for (ib = 0; ib < taille; ib++) {
+            if (alea == true) {
+                if ((Math.random() * 10) > 8) {
+                    table[i][ib] = 1;
                 } else {
                     table[i][ib] = 0;
                 }
+            } else {
+                table[i][ib] = 0;
             }
         }
-
-        this.grille = table;
-    },
-
-    /** 
-     * Dessine la grille sur la page
-     * @param string grilleID
-     *
-     */
-    draw: function (grilleID) {
-        var toDisplay = "";
-
-        for(iLine = 0; iLine < this.grille.length; iLine++) {
-            toDisplay += '<div id="line-'+ iLine +'" class="line">';
-
-            for(iRow = 0; iRow < this.grille.length; iRow++) {
-                var active = (!this.grille[iLine][iRow]) ? "false" : "true";
-                toDisplay += '<div class="row" id="row-'+ iRow +'" data-active="'+ active +'"></div>';
-            }
-
-            toDisplay += '<div class="clear"></div>';
-            toDisplay += '</div>';
-        }
-
-        // Initialisation
-        $('#'+ grilleID).html(toDisplay);
     }
+
+    this.grille = table;
+};
+
+/** 
+ * Dessine la grille sur la page
+ * @param string grilleID
+ *
+ */
+grilleController.prototype.draw = function (grilleID) {
+    var toDisplay = "";
+
+    for(iLine = 0; iLine < this.grille.length; iLine++) {
+        toDisplay += '<div id="line-'+ iLine +'" class="line">';
+
+        for(iRow = 0; iRow < this.grille.length; iRow++) {
+            var active = (!this.grille[iLine][iRow]) ? "false" : "true";
+            toDisplay += '<div class="row" id="row-'+ iRow +'" data-active="'+ active +'"></div>';
+        }
+
+        toDisplay += '<div class="clear"></div>';
+        toDisplay += '</div>';
+    }
+
+    // Initialisation
+    $('#'+ grilleID).html(toDisplay);
 };

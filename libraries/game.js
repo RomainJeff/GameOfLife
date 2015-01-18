@@ -4,11 +4,10 @@
  * @param neighborController
  * @param grilleTempoController
  */
-var gameController = function (grilleController, neightboorController, grilleTempoController) {
+var gameController = function (grilleController, grilleTempoController) {
     this.grilleController = grilleController;
-    this.neightboorController = neightboorController;
     this.grilleTempoController = grilleTempoController;
-}
+};
 
 /**
  * Lance une partie
@@ -21,28 +20,25 @@ gameController.prototype.start = function() {
         // On parcourt les colonnes
         for (row = 0; row < sizeGrille; row++) {
             // On recupere le nombre de voisins
-            var neightboors = this.neightboorController.init(this.grilleController, line, row)
+            var neighbors = new neighborController(this.grilleController, line, row)
                                                   .getAlive();
 
             // Si cellule morte
             if (this.grilleController.get()[line][row] == 0) {
                 // Si 3 voisins = naissance
-                if (neightboors == 3) {
+                if (neighbors == 3) {
                     this.grilleTempoController.setRow(line, row, 1);
                 } else {
                     this.grilleTempoController.setRow(line, row, 0);
                 }
             } else {
                 // Si 2 ou 3 voisins = vivante
-                if (neightboors == 2 || neightboors == 3) {
+                if (neighbors == 2 || neighbors == 3) {
                     this.grilleTempoController.setRow(line, row, 1);
                 } else {
                     this.grilleTempoController.setRow(line, row, 0);
                 }
             }
-
-            // On reset pour la prochaine cellule
-            this.neightboorController.reset();
         }
     }
 
