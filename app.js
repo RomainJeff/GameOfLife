@@ -4,6 +4,7 @@ var sizeGrille = 20;
 var grilleID = "grille";
 var gameInterval = function () {};
 var grille = new grilleController();
+var grilleTempo = new grilleTempoController();
 
 grille.generate(sizeGrille);
 grille.draw(grilleID);
@@ -21,10 +22,10 @@ grille.draw(grilleID);
 // Lors du clique sur le bouton "Jouer"
 $('#play').on('click', function () {
     $('#grille').addClass('active');
-    var game = new gameController(grille, new grilleTempoController())
+    var game = new gameController(grille, grilleTempo)
                   .start();
     gameInterval = setInterval(function (){
-        var game = new gameController(grille, new grilleTempoController())
+        var game = new gameController(grille, grilleTempo)
                   .start();
     }, 100);
 });
