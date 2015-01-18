@@ -22,8 +22,8 @@ grille.draw(grilleID);
 // Lors du clique sur le bouton "Jouer"
 $('#play').on('click', function () {
     $('#grille').addClass('active');
-    var game = new gameController(grille, grilleTempo)
-                  .start();
+
+    // Lancement du jeu
     gameInterval = setInterval(function (){
         var game = new gameController(grille, grilleTempo)
                   .start();
