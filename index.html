@@ -25,8 +25,23 @@
             box-sizing: border-box;
         }
 
-        .row[data-active=true] {
+        .row[data-active=true][data-character=green] {
             background: url('resources/images/green.jpg');
+            background-size: 25px 25px;
+        }
+
+        .row[data-active=true][data-character=flash] {
+            background: url('resources/images/flash.jpg');
+            background-size: 25px 25px;
+        }
+
+        .row[data-active=true][data-character=superman] {
+            background: url('resources/images/superman.jpg');
+            background-size: 25px 25px;
+        }
+
+        .row[data-active=true][data-character=batman] {
+            background: url('resources/images/batman.jpg');
             background-size: 25px 25px;
         }
 
@@ -48,10 +63,10 @@
     <button id="reset">Reinitialiser</button>
     
     <span id="characters" style="margin-left: 243px;">
-        <img src="resources/images/superman.jpg">
-        <img src="resources/images/green.jpg">
-        <img src="resources/images/flash.jpg">
-        <img src="resources/images/batman.jpg">
+        <img data-name="superman" src="resources/images/superman.jpg">
+        <img data-name="green" src="resources/images/green.jpg">
+        <img data-name="flash" src="resources/images/flash.jpg">
+        <img data-name="batman" src="resources/images/batman.jpg">
     </span>
 
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>

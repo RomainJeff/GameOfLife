@@ -1,6 +1,7 @@
 var grilleController = function(){
 
     this.grille = [];
+    this.character = "green";
 
 }
 /**
@@ -22,6 +23,23 @@ grilleController.prototype.setRow = function (line, row, value) {
 grilleController.prototype.get = function () {
 
     return this.grille;
+};
+
+/**
+ * Definie le personnage
+ * @param string character
+ */
+grilleController.prototype.setCharacter = function (character) {
+    this.character = character;
+};
+
+
+/**
+ * Recupere le personnage
+ * @return string character
+ */
+grilleController.prototype.getCharacter = function () {
+    return this.character;
 };
 
 /** 
@@ -74,7 +92,7 @@ grilleController.prototype.draw = function (grilleID) {
 
         for(iRow = 0; iRow < this.grille.length; iRow++) {
             var active = (!this.grille[iLine][iRow]) ? "false" : "true";
-            toDisplay += '<div class="row" id="row-'+ iRow +'" data-active="'+ active +'"></div>';
+            toDisplay += '<div class="row" id="row-'+ iRow +'" data-character="'+ this.getCharacter() +'" data-active="'+ active +'"></div>';
         }
 
         toDisplay += '<div class="clear"></div>';

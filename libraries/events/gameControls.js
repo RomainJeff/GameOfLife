@@ -52,11 +52,10 @@ gameControls.prototype.stop = function () {
 
 /**
  * Reinitialise le jeu
- * @param object currentElement
  *
  */
-gameControls.prototype.reset = function (currentElement) {
-    $(currentElement).trigger('click');
+gameControls.prototype.reset = function () {
+    $('#stop').trigger('click');
 
     for (i = 0; i < this.grille.getSize(); i++) {
         for (j = 0; j < this.grille.getSize(); j++) {

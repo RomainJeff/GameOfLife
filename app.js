@@ -56,11 +56,13 @@ $('#grille').on('click', '.row', function () {
 
 // Personnages
 $('#characters').on('click', 'img', function () {
-    var img = $(this).attr('src');
+    var name = $(this).attr('data-name');
 
-    $('#grille .row[data-active=true]').each(function () {
-        $(this).css({
-            background: 'url("'+ img +'")'
-        });
+    // On met a jour le personnage actuel
+    $('.row').each(function () {
+        $(this).attr('data-character', name);
     });
+
+    // On definie le personnage pour le jeu
+    grille.setCharacter(name);
 });
