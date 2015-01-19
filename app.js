@@ -44,7 +44,7 @@ $('#grille').on('click', '.row', function () {
     var lineCoord = ($(this).parent().attr('id')).replace('line-', '');
     var rowCoord = ($(this).attr('id')).replace('row-', '');
 
-    if ($(this).attr('data-active') == true) {
+    if ($(this).attr('data-active') == "true") {
         $(this).attr('data-active', false);
         grille.setRow(lineCoord, rowCoord, 0);
     } else {
