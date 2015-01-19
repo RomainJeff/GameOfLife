@@ -2,9 +2,13 @@
 /** PARAMETRES **/
 var sizeGrille = 20;
 var grilleID = "grille";
-var gameInterval = function () {};
 var grille = new grilleController();
 var grilleTempo = new grilleTempoController();
+var gameControlsHandler = new gameControls({
+    grille: grille,
+    grilleTempo: grilleTempo,
+    id: grilleID
+});
 
 grille.generate(sizeGrille);
 grille.draw(grilleID);
@@ -21,33 +25,17 @@ grille.draw(grilleID);
 
 // Lors du clique sur le bouton "Jouer"
 $('#play').on('click', function () {
-    $('#grille').addClass('active');
-
-    // Lancement du jeu
-    gameInterval = setInterval(function (){
-        var game = new gameController(grille, grilleTempo)
-                  .start();
-    }, 100);
+    gameControlsHandler.play();
 });
-
 
 // Lors du clique sur le bouton "Stop"
 $('#stop').on('click', function () {
-    $('#grille').removeClass('active');
-    clearInterval(gameInterval);
+    gameControlsHandler.stop();
 });
-
 
 // Lors du clique sur le bouton "Reinitialiser"
 $('#reset').on('click', function () {
-    $('#stop').trigger('click');
-
-    for (i = 0; i < sizeGrille; i++) {
-        for (j = 0; j < sizeGrille; j++) {
-            grille.setRow(i, j, 0);
-        }
-    }
-    grille.draw(grilleID);
+    gameControlsHandler.reset(this);
 });
 
 
