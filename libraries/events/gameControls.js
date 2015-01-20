@@ -30,7 +30,7 @@ var gameControls = function (options) {
  *
  */
 gameControls.prototype.play = function () {
-    $(this.id).addClass('active');
+    $("#"+ this.id).addClass('active');
 
     // Stockage de l'interval de mise a jour du jeu
     this.interval = setInterval(function (){
@@ -45,7 +45,7 @@ gameControls.prototype.play = function () {
  *
  */
 gameControls.prototype.stop = function () {
-    $(this.id).removeClass('active');
+    $("#"+ this.id).removeClass('active');
     clearInterval(this.interval);
 };
 
@@ -63,5 +63,15 @@ gameControls.prototype.reset = function () {
         }
     }
 
+    this.grille.draw(this.id);
+}
+
+
+/**
+ * Genere les cellules vivantes aleatoirement
+ *
+ */
+gameControls.prototype.alea = function () {
+    this.grille.generate(this.grille.getSize(), true);
     this.grille.draw(this.id);
 }

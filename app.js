@@ -1,4 +1,3 @@
-
 /** PARAMETRES **/
 var sizeGrille = 20;
 var grilleID = "grille";
@@ -9,7 +8,10 @@ var gameControlsHandler = new gameControls({
     grilleTempo: grilleTempo,
     id: grilleID
 });
+var settingsControlsHandler = new settingsControls(grille);
 
+
+/** GENERATION & DESSIN DE LA GRILLE **/
 grille.generate(sizeGrille);
 grille.draw(grilleID);
 
@@ -38,31 +40,18 @@ $('#reset').on('click', function () {
     gameControlsHandler.reset(this);
 });
 
-
-// Selection manuelle des elements de la grille
-$('#grille').on('click', '.row', function () {
-    var lineCoord = ($(this).parent().attr('id')).replace('line-', '');
-    var rowCoord = ($(this).attr('id')).replace('row-', '');
-
-    if ($(this).attr('data-active') == "true") {
-        $(this).attr('data-active', false);
-        grille.setRow(lineCoord, rowCoord, 0);
-    } else {
-        $(this).attr('data-active', true);
-        grille.setRow(lineCoord, rowCoord, 1);
-    }
+// Lors du clique sur le bouton "Aleatoire"
+$('#alea').on('click', function () {
+    gameControlsHandler.alea();
 });
 
 
-// Personnages
+// Selection manuelle des elements de la grille
+$('#grille').on('click', '.row', function () {
+    settingsControlsHandler.cellsSelect(this);
+});
+
+// Selection du personnage
 $('#characters').on('click', 'img', function () {
-    var name = $(this).attr('data-name');
-
-    // On met a jour le personnage actuel
-    $('.row').each(function () {
-        $(this).attr('data-character', name);
-    });
-
-    // On definie le personnage pour le jeu
-    grille.setCharacter(name);
+    settingsControlsHandler.characterSelect(this);
 });
