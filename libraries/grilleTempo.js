@@ -10,7 +10,7 @@ var grilleTempoController = function (){
  */
 grilleTempoController.prototype.get = function() {
     return this.grille;
-}
+};
 
 /**
  * Definit une cellule de la grille temporaire

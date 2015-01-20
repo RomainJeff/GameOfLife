@@ -1,11 +1,3 @@
-var neighborController = function(grilleController, line, row){
-
-    this.grilleController = grilleController;
-    this.line = line;
-    this.row = row;
-    this.neighbors = 0;
-}
-
 /**
  * Initialise le controller avec la cellule
  * @param grilleController grilleController
@@ -13,6 +5,13 @@ var neighborController = function(grilleController, line, row){
  * @param int row
  *
  */
+var neighborController = function(grilleController, line, row){
+
+    this.grilleController = grilleController;
+    this.line = line;
+    this.row = row;
+    this.neighbors = 0;
+};
 
 
 /**

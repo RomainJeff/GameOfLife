@@ -3,7 +3,8 @@ var grilleController = function(){
     this.grille = [];
     this.character = "green";
 
-}
+};
+
 /**
  * Defini l'etat d'une cellule
  * @param int line 

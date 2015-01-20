@@ -40,4 +40,4 @@ settingsControls.prototype.characterSelect = function (currentElement) {
 
     // On definie le personnage pour le jeu
     this.grille.setCharacter(name);
-}
+};

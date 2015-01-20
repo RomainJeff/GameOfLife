@@ -64,7 +64,7 @@ gameControls.prototype.reset = function () {
     }
 
     this.grille.draw(this.id);
-}
+};
 
 
 /**
@@ -74,4 +74,4 @@ gameControls.prototype.reset = function () {
 gameControls.prototype.alea = function () {
     this.grille.generate(this.grille.getSize(), true);
     this.grille.draw(this.id);
-}
+};
