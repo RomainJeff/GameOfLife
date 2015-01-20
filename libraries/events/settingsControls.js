@@ -35,7 +35,7 @@ settingsControls.prototype.characterSelect = function (currentElement) {
 
     // On met a jour le personnage actuel
     $('.row').each(function () {
-        $(currentElement).attr('data-character', name);
+        $(this).attr('data-character', name);
     });
 
     // On definie le personnage pour le jeu
