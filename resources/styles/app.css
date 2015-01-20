@@ -1,0 +1,49 @@
+#grille .row {
+    border: solid 1px black;
+}
+
+#grille.active .row {
+    border-color: white;
+}
+
+.row {
+    width: 27px;
+    padding: 0;
+    margin: 0;
+    height: 27px;
+    background: white;
+    float: left;
+    cursor: pointer;
+    background: transparent;
+    transition-duration: 200ms;
+    box-sizing: border-box;
+}
+
+.row[data-active=true][data-character=green] {
+    background: url('../images/green.jpg');
+    background-size: 25px 25px;
+}
+
+.row[data-active=true][data-character=flash] {
+    background: url('../images/flash.jpg');
+    background-size: 25px 25px;
+}
+
+.row[data-active=true][data-character=superman] {
+    background: url('../images/superman.jpg');
+    background-size: 25px 25px;
+}
+
+.row[data-active=true][data-character=batman] {
+    background: url('../images/batman.jpg');
+    background-size: 25px 25px;
+}
+
+img {
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.clear {
+    clear: both;
+}
